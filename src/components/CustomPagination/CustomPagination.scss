@@ -1,0 +1,133 @@
+.custom-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    border-radius: 8px;
+
+    .ant-pagination {
+        .ant-pagination-item {
+            border: 0.5px solid var(--Neutral-06, #e6e6e6);
+            background: #fff;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            margin: 0;
+
+            &:hover {
+                border-color: #d00000;
+
+                a {
+                    color: #d00000;
+                }
+            }
+
+            &.ant-pagination-item-active {
+                background: var(--Primary-01, #d00000);
+                border-color: #d00000;
+
+                a {
+                    color: #fff;
+                }
+            }
+        }
+
+        .ant-pagination-prev,
+        .ant-pagination-next {
+            border: 0.5px solid var(--Neutral-06, #e6e6e6);
+            background: #fff;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            margin: 0;
+
+            &:hover {
+                border-color: #d00000;
+                color: #d00000;
+            }
+
+            &.ant-pagination-disabled {
+                &:hover {
+                    border-color: #d9d9d9;
+                    color: rgba(0, 0, 0, 0.25);
+                }
+            }
+        }
+
+        .ant-pagination-jump-prev,
+        .ant-pagination-jump-next {
+            margin: 0;
+            &:hover {
+                .ant-pagination-item-link-icon {
+                    color: #d00000;
+                }
+            }
+        }
+
+        .ant-pagination-options {
+            .ant-select {
+                .ant-select-selector {
+                    border-radius: 6px;
+                    transition: all 0.3s ease;
+
+                    &:hover {
+                        border-color: #d00000;
+                    }
+                }
+
+                &.ant-select-focused {
+                    .ant-select-selector {
+                        border-color: #d00000;
+                        box-shadow: 0 0 0 2px rgba(231, 76, 60, 0.2);
+                    }
+                }
+            }
+        }
+
+        .ant-pagination-total-text {
+            color: #666;
+            font-size: 14px;
+            margin-right: 16px;
+        }
+    }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+    .custom-pagination {
+        padding: 24px 16px;
+
+        .ant-pagination {
+            .ant-pagination-total-text {
+                display: none;
+            }
+
+            .ant-pagination-options {
+                .ant-pagination-options-size-changer {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .custom-pagination {
+        padding: 20px 12px;
+
+        .ant-pagination {
+            .ant-pagination-item {
+                margin: 0 2px;
+                min-width: 28px;
+                height: 28px;
+                line-height: 26px;
+                font-size: 12px;
+            }
+
+            .ant-pagination-prev,
+            .ant-pagination-next {
+                min-width: 28px;
+                height: 28px;
+                line-height: 26px;
+            }
+        }
+    }
+}

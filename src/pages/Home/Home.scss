@@ -1,0 +1,177 @@
+// Home.scss - Home page styles with SCSS features
+.home {
+    padding-top: 20px !important;
+    padding-bottom: 32px !important;
+    &-content {
+        max-height: 468px;
+        .right-posters {
+            max-width: 360px;
+            .poster-image {
+                height: calc((100% - 24px) / 3);
+                border-radius: 8px;
+                object-fit: cover;
+            }
+        }
+    }
+
+    .poster-image {
+        border-radius: 8px;
+        width: 100%;
+    }
+
+    /* In your CSS/SCSS */
+    .flex-banners {
+        width: 100%;
+        .poster-image {
+            width: 50%;
+            object-fit: cover; // Optional: to maintain aspect ratio
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .home {
+        padding: 0 !important;
+        gap: 20px !important;
+        &-content {
+            .image-carousel-container {
+                max-height: 247px;
+                border-radius: 0;
+                .ant-carousel,
+                .slick-slider,
+                .slick-list,
+                .slick-track,
+                .slick-slide > div,
+                .carousel-slide,
+                img {
+                    height: 247px;
+                    border-radius: 0 !important;
+                }
+            }
+        }
+
+        .outstanding-categories {
+            padding: 0 16px;
+            h2 {
+                font-size: 16px;
+                font-weight: 600;
+                margin-bottom: 12px;
+            }
+            .category-list {
+                display: flex;
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                gap: 12px;
+                scrollbar-width: none;
+                scroll-behavior: smooth;
+                .category-item {
+                    flex: 0 0 auto;
+                    height: 92px;
+                    width: 92px;
+                    text-align: center;
+                }
+            }
+        }
+
+        .new-items-container {
+            padding: 0 16px;
+            .new-items-grid {
+                display: flex;
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                gap: 16px;
+                scroll-behavior: smooth;
+                .new-item-card {
+                    flex: 0 0 auto;
+                    width: 327px;
+                    height: 226px;
+                    .item-content {
+                        gap: 0px !important;
+                    }
+                    .item-image {
+                        max-width: 226px;
+                        transform: translateX(50%);
+                        height: 100%;
+                        align-items: flex-end;
+                    }
+                }
+            }
+        }
+
+        .daily-prefer {
+            flex-direction: column;
+            border-radius: 0;
+            &-header {
+                align-items: center !important;
+            }
+
+            .slider-content {
+                padding: 0 !important;
+            }
+        }
+
+        .full-posters-container {
+            .new-item-card {
+                display: flex;
+                max-height: 176px;
+            }
+            .item-content {
+                padding-left: 20px !important;
+                gap: 0 !important;
+                width: 55% !important;
+                .item-title {
+                    font-size: 14px !important;
+                }
+                .item-desc {
+                    font-size: 12px !important;
+                }
+                .see-all-btn {
+                    height: 20px;
+                    font-size: 8px;
+                    padding: 0 8px !important;
+                    margin-top: 8px;
+                }
+            }
+            .item-image {
+                max-height: 169px;
+                margin-right: -90px;
+            }
+        }
+
+        .product-list-wrapper {
+            .product-list-container {
+                padding: 0 16px;
+                flex-direction: column;
+                align-items: flex-start;
+                h2 {
+                    font-size: 16px;
+                    font-weight: 600;
+                }
+                .product-list-brands {
+                    max-width: 100%;
+                    display: flex;
+                    overflow-x: auto;
+                    white-space: nowrap;
+                    scrollbar-width: none;
+                    -ms-overflow-style: auto;
+                }
+            }
+            .slider-content {
+                padding: 0 !important;
+            }
+        }
+
+        .poster-image {
+            border-radius: 0;
+        }
+
+        .product-grid {
+            padding-top: 0;
+            h2 {
+                font-size: 16px;
+                font-weight: 600;
+                margin-bottom: 12px;
+            }
+        }
+    }
+}

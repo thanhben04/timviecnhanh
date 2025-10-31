@@ -1,0 +1,119 @@
+// Dark overlay backdrop
+.sidebar-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1000;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.sidebar-menu-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: #fff;
+    z-index: 1001;
+    transform: translateX(0);
+    animation: slideInLeft 0.3s ease-out;
+    overflow-y: auto;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15);
+
+    .sidebar-header {
+        padding: 16px;
+        border-bottom: 1px solid var(--Neutral-06, #e6e6e6);
+        background: var(--Neutral-08, #fafafa);
+        img {
+            max-width: 80px;
+            height: auto;
+        }
+        .ant-btn {
+            background-color: transparent;
+            border: none;
+            box-shadow: none;
+        }
+    }
+
+    .sidebar-menu-content {
+        display: flex;
+        height: calc(100vh - 64px); // Adjust this based on your header
+        overflow: hidden;
+
+        .sidebar-menu-left {
+            width: 90px;
+            overflow-y: auto;
+            border-right: 1px solid #e0e0e0;
+
+            display: flex;
+            flex-direction: column;
+
+            .sidebar-category-item {
+                min-height: 90px;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                padding: 8px 4px;
+                cursor: pointer;
+                text-align: center;
+                transition: background 0.2s ease;
+
+                .icon,
+                .label {
+                    line-height: normal;
+                }
+
+                &.active {
+                    background: var(--Primary-01, #d00000);
+                    color: white;
+                    font-weight: 600;
+                }
+            }
+        }
+
+        .sidebar-menu-right {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+
+            .sidebar-subcategory-group {
+                .subcategory-title {
+                    color: var(--Neutral-02, #404040);
+                    font-size: 14px;
+                    font-weight: 700;
+                    line-height: normal;
+                    margin-bottom: 8px;
+                }
+
+                .subcategory-items {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 8px;
+
+                    .subcategory-item {
+                        display: flex;
+                        padding: 4px 8px;
+                        justify-content: center;
+                        align-items: center;
+                        gap: 10px;
+                        border-radius: 4px;
+                        border: 1px solid var(--Neutral-06, #e6e6e6);
+                        line-height: normal;
+
+                        color: var(--Neutral-01, #171717);
+                        font-size: 12px;
+                        font-weight: 500;
+                    }
+                }
+            }
+        }
+    }
+}

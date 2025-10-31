@@ -1,0 +1,99 @@
+.mobile-profile-layout {
+    .mobile-profile-content {
+        padding: 0;
+        background-color: #f5f5f5;
+        min-height: calc(
+            100vh - 64px - 60px
+        ); // Subtract header and footer height
+
+        .profile-menu-header {
+            background: white;
+            padding: 16px;
+            border-bottom: 1px solid #f0f0f0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+            .profile-menu-btn {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                background: #1890ff;
+                color: white;
+                border: none;
+                border-radius: 6px;
+                padding: 8px 16px;
+                font-size: 16px;
+                cursor: pointer;
+                transition: background-color 0.2s ease;
+
+                &:hover {
+                    background: #40a9ff;
+                }
+
+                &:active {
+                    background: #096dd9;
+                }
+            }
+        }
+
+        .profile-page-content {
+            padding: 16px;
+
+            .profile-section {
+                .ant-card {
+                    border-radius: 8px;
+                    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+                    .ant-card-body {
+                        padding: 20px;
+                    }
+
+                    h4 {
+                        margin-bottom: 16px;
+                        color: #262626;
+                    }
+
+                    // Form styling
+                    .ant-form {
+                        .ant-form-item {
+                            margin-bottom: 20px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.mobile-profile-drawer {
+    .ant-drawer-header {
+        background: #1890ff;
+        color: white;
+        border-bottom: none;
+
+        .ant-drawer-title {
+            color: white;
+            font-weight: 600;
+        }
+
+        .ant-drawer-close {
+            color: white;
+
+            &:hover {
+                background: rgba(255, 255, 255, 0.1);
+            }
+        }
+    }
+
+    .ant-drawer-body {
+        padding: 0;
+    }
+}
+
+// Hide the profile menu button on desktop
+@media (min-width: 769px) {
+    .mobile-profile-layout {
+        .profile-menu-header {
+            display: none;
+        }
+    }
+}

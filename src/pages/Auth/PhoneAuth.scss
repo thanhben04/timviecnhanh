@@ -1,0 +1,356 @@
+// Global font family
+* {
+    font-family: 'Lexend', sans-serif;
+}
+
+.phone-auth-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    font-family: 'Lexend', sans-serif;
+}
+.phone-auth-image {
+    width: 50%;
+    height: 100vh;
+}
+.phone-auth-wrapper {
+    width: 50%;
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+
+    .phone-auth-card {
+        box-shadow: none;
+        .ant-card-body {
+            padding: 24px;
+            max-width: 532px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        .phone-auth-header {
+            text-align: center;
+            img {
+                width: 120px;
+                height: auto;
+            }
+        }
+
+        .ant-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            .ant-form-item {
+                margin-bottom: 0;
+                .ant-checkbox {
+                    &-checked {
+                        .ant-checkbox-inner {
+                            background-color: #d00000;
+                            border-color: #d00000;
+                        }
+                    }
+                    &-wrapper {
+                        align-items: flex-start;
+                        justify-content: flex-start;
+                        display: flex;
+                        .ant-checkbox {
+                            top: 2px;
+                        }
+                    }
+                }
+
+                .custom-input {
+                    &.error {
+                        .floating-label {
+                            color: #d00000;
+                        }
+                        .ant-input-affix-wrapper,
+                        .ant-select-selector,
+                        .ant-input {
+                            border-color: #d00000 !important;
+                        }
+                    }
+                    .floating-label {
+                        position: absolute;
+                        top: -8px;
+                        left: 12px;
+                        background: white;
+                        padding: 0 4px;
+                        font-size: 12px;
+                        color: #a3a3a3;
+                        z-index: 10;
+                    }
+
+                    .ant-input-group {
+                        padding: 2px;
+                        transition: border 0.3s;
+                        display: flex;
+                        .ant-select {
+                            height: 100%;
+                        }
+                        .ant-select-selector {
+                            width: 120px;
+                        }
+                        .ant-select-selector,
+                        .ant-input,
+                        .ant-input-number {
+                            height: 50px;
+                            border-color: #a3a3a3;
+                            flex: 1;
+                        }
+                    }
+                    .ant-input-affix-wrapper,
+                    .ant-input-number-wrapper {
+                        height: 50px;
+                        border-color: #a3a3a3;
+                        .ant-btn-color-link {
+                            color: var(--Neutral-04, #a3a3a3);
+                            font-size: 12px !important;
+                            font-weight: 400;
+                        }
+                    }
+                    .ant-input-number-input-wrap {
+                        width: 100%;
+                        input {
+                            height: 100%;
+                        }
+                    }
+                }
+                .send-otp-button {
+                    color: #d00000 !important;
+                }
+                .register-button {
+                    display: flex;
+                    height: 44px;
+                    padding: 10px 16px;
+                    justify-content: center;
+                    align-items: center;
+                    border-radius: 8px;
+                    background: var(--Primary-01, #d00000);
+                    color: white;
+                }
+            }
+        }
+        .ant-divider {
+            margin: 0;
+            .ant-typography {
+                color: var(--Neutral-03, #737373);
+                text-align: center;
+                font-size: 16px;
+                font-weight: 400;
+            }
+        }
+    }
+}
+
+.phone-auth-error {
+    margin-bottom: 20px;
+}
+
+.social-login {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 54px;
+    .ant-btn {
+        border: none;
+    }
+}
+.app-download-container {
+    width: 100%;
+
+    .app-download {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        border-radius: 8px;
+        border: 1px solid var(--Neutral-06, #e6e6e6);
+        background: var(--Neutral-08, #fafafa);
+        padding: 12px;
+        img {
+            height: 59px;
+            width: 59px;
+        }
+        .app-info {
+            height: 100%;
+            width: 100%;
+        }
+
+        .download-button {
+            display: flex;
+            height: 44px;
+            padding: 10px 16px;
+            justify-content: center;
+            align-items: center;
+            border-radius: 8px;
+            border: 1px solid var(--Primary-03, #ffc0c0);
+            background: var(--Primary-04, #fff0f0);
+            color: var(--Primary-01, #d00000);
+            font-size: 16px;
+            font-weight: 400;
+        }
+    }
+}
+.app-download-modal {
+    background: var(--Primary-04, #fff0f0);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    &.mobile {
+        height: 100vh;
+        position: relative;
+        z-index: 1;
+        .blur-background {
+            width: 411px;
+            height: 596px;
+            position: fixed;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            background: radial-gradient(
+                50% 50% at 50% 50%,
+                rgba(208, 0, 0, 0.5) 0%,
+                rgba(255, 0, 0, 0) 100%
+            );
+            z-index: 0;
+            pointer-events: none; // optional: allows clicks to pass through
+        }
+
+        .floating-download-btn {
+            position: fixed;
+            height: 48px;
+            bottom: 32px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            width: 351px;
+            padding: 12px 24px;
+            border-radius: 500px;
+            border: 1px solid var(--Neutral-06, #e6e6e6);
+            background: #fff;
+
+            color: var(--Neutral-01, #171717);
+            font-size: 16px;
+            font-weight: 500;
+            box-shadow: none;
+            &:hover,
+            &:active {
+                background: #fff !important;
+                color: var(--Neutral-01, #171717) !important;
+            }
+        }
+    }
+    .text-wrapper {
+        margin-bottom: 16px;
+        h5 {
+            color: var(--Primary-01, #d00000);
+            font-size: 24px;
+            font-weight: 800;
+            font-family: 'Lexend';
+        }
+        span {
+            color: var(--Neutral-01, #171717);
+            font-size: 24px;
+            font-weight: 800;
+        }
+    }
+    .ant-modal-content {
+        position: relative;
+        padding: 24px;
+        border-radius: 12px;
+        height: 641px;
+        .ant-modal-body {
+            height: 100%;
+            .ant-row {
+                height: 100%;
+            }
+        }
+    }
+
+    .modal-close {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        font-size: 18px;
+        cursor: pointer;
+    }
+
+    .left-section {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: var(--Primary-04, #fff0f0);
+        overflow: hidden;
+        .ant-image {
+            position: absolute;
+            bottom: -20%;
+        }
+    }
+
+    .right-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        .qr-section {
+            max-width: 225px;
+            text-align: center;
+            .ant-typography {
+                color: var(--Neutral-02, #404040);
+                font-size: 16px;
+                font-weight: 600;
+            }
+            .app {
+                color: var(--Primary-01, #d00000);
+                font-size: 16px;
+                font-weight: 700;
+            }
+        }
+    }
+}
+
+.ant-typography {
+    color: var(--Neutral-01, #171717);
+    font-size: 14px;
+    font-weight: 400;
+}
+.link {
+    color: var(--Alerts-Blue-01, #0a68ff);
+    font-size: 14px;
+    font-weight: 400;
+    text-decoration-line: underline;
+}
+
+@media screen and (max-width: 768px) {
+    .phone-auth-image {
+        width: 100%;
+        height: 50vh;
+    }
+    .phone-auth-wrapper {
+        width: 100%;
+        height: 50vh;
+    }
+    .phone-auth-card {
+        .ant-card-body {
+            padding: 16px;
+        }
+    }
+
+    .app-download-container {
+        bottom: 0;
+        width: 100%;
+    }
+}

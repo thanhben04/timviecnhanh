@@ -1,0 +1,97 @@
+.custom-breadcrumb {
+    padding: 0;
+    padding-top: 24px;
+    background-color: transparent;
+
+    .ant-breadcrumb {
+        font-size: 14px;
+
+        .ant-breadcrumb-separator {
+            color: #8c8c8c;
+            margin: 0 8px;
+        }
+    }
+
+    .breadcrumb-item {
+        display: inline-flex;
+        align-items: center;
+
+        .breadcrumb-icon {
+            margin-right: 4px;
+            display: inline-flex;
+            align-items: center;
+
+            .anticon {
+                font-size: 14px;
+            }
+        }
+
+        .breadcrumb-text {
+            color: #8c8c8c;
+            font-weight: normal;
+        }
+
+        .breadcrumb-link {
+            color: var(--Neutral-03, #737373);
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        &.breadcrumb-current {
+            .breadcrumb-text {
+                color: rgba(0, 0, 0, 0.88);
+                font-weight: 500;
+            }
+        }
+    }
+
+    // Responsive design
+    @media (max-width: 768px) {
+        margin-bottom: 12px;
+        padding: 4px 0;
+
+        .ant-breadcrumb {
+            font-size: 13px;
+        }
+
+        .breadcrumb-item {
+            .breadcrumb-icon {
+                margin-right: 3px;
+
+                .anticon {
+                    font-size: 13px;
+                }
+            }
+        }
+
+        .ant-breadcrumb-separator {
+            margin: 0 6px !important;
+        }
+    }
+
+    // Dark theme support
+    @media (prefers-color-scheme: dark) {
+        .breadcrumb-item {
+            .breadcrumb-text {
+                color: rgba(255, 255, 255, 0.65);
+            }
+
+            &.breadcrumb-current {
+                .breadcrumb-text {
+                    color: rgba(255, 255, 255, 0.88);
+                }
+            }
+        }
+
+        .ant-breadcrumb-separator {
+            color: rgba(255, 255, 255, 0.45);
+        }
+    }
+}
+
+// Container spacing for pages
+.page-container {
+    .custom-breadcrumb {
+        margin-bottom: 20px;
+    }
+}

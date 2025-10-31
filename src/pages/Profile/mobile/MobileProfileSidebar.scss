@@ -1,0 +1,59 @@
+.mobile-profile-sidebar {
+    background-color: #fff;
+    .mobile-profile-header {
+        padding: 16px 0;
+    }
+    .statistics-grid {
+        padding: 0 16px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+
+        grid-auto-flow: column;
+        overflow-x: auto;
+        scrollbar-width: none;
+        scrollbar-color: #ccc transparent;
+        .profile-statistic {
+            display: flex;
+            padding: 8px;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            flex: 1 0 0;
+            border-radius: 4px;
+            border: 1px solid var(--Neutral-07, #f5f5f5);
+            background: var(--Neutral-08, #fafafa);
+            max-width: 85px;
+            .stat-icon {
+                width: 24px;
+                height: 24px;
+                background-color: #fff1f0; /* light red circle */
+                border-radius: 50%;
+                color: #ff4d4f;
+                font-size: 20px;
+                flex-shrink: 0;
+            }
+            .stat-total {
+                color: var(--Primary-01, #d00000);
+                font-size: 16px;
+                font-weight: 700;
+            }
+            .stat-label {
+                color: var(--Neutral-03, #737373);
+                font-size: 12px;
+                font-weight: 400;
+                text-align: center;
+            }
+        }
+    }
+    .mobile-profile-menu {
+        &-section {
+            .mobile-profile-section-title {
+                padding: 8px 16px;
+                color: var(--Neutral-03, #737373);
+                font-size: 14px;
+                font-weight: 400;
+            }
+        }
+    }
+}

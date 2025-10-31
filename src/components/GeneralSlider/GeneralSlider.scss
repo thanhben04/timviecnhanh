@@ -1,0 +1,123 @@
+.general-slider {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+
+    .slider-container {
+        position: relative;
+        display: flex;
+        align-items: center;
+        width: 100%;
+    }
+
+    .slider-content {
+        display: flex;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        flex: 1;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        .slider-item {
+            flex-shrink: 0;
+        }
+    }
+
+    .slider-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        height: fit-content;
+        width: fit-content;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        z-index: 10;
+        border: none;
+        background-color: transparent;
+
+        span {
+            font-size: 24px;
+            font-weight: 600;
+            color: #333;
+            line-height: 1;
+        }
+
+        &.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        &.slider-arrow-left {
+            left: 0px;
+        }
+
+        &.slider-arrow-right {
+            right: 0px;
+        }
+    }
+
+    .slider-dots {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 20px;
+
+        .slider-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            border: none;
+            background: #d0d0d0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+
+            &:hover {
+                background: #a0a0a0;
+            }
+
+            &.active {
+                background: #e74c3c;
+                transform: scale(1.2);
+            }
+        }
+    }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+    .general-slider {
+        .slider-arrow {
+            width: 40px;
+            height: 40px;
+
+            span {
+                font-size: 20px;
+            }
+
+            &.slider-arrow-left {
+                left: 5px;
+            }
+
+            &.slider-arrow-right {
+                right: 5px;
+            }
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .general-slider {
+        .slider-arrow {
+            span {
+                font-size: 18px;
+            }
+        }
+    }
+}
