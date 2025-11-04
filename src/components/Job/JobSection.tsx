@@ -1,10 +1,10 @@
 import JobList from "./JobList";
-import { Job } from "../../types/job";
+import { JobType } from "../../types/job";
 
 interface Props {
     title: string;
-    jobs: Job[];
-    type: "urgent" | "instant";
+    jobs: JobType[];
+    type: "VIEC_LAM_TUYEN_GAP" | "VIEC_DI_LAM_NGAY";
 }
 
 export default function JobSection({ title, jobs, type }: Props) {

@@ -3,22 +3,15 @@ import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import { useRef, useState } from "react";
 import { HotJobIcon } from "assets/icons/HotJobIcon";
 import JobList from "components/Job/JobList";
+import { JobType } from "types/job";
 
-interface Job {
-    title: string;
-    company: string;
-    salary: string;
-    location: string;
-    logo: string;
-    url: string;
-    deadline: string;
-}
+
 
 interface Props {
     title: string;
-    jobs: Job[];
+    jobs: JobType[];
     provinces: string[];
-    type?: "urgent" | "instant";
+    type?: "VIEC_LAM_TUYEN_GAP" | "VIEC_DI_LAM_NGAY";
     typeFilterItems?: any[];
 }
 
@@ -26,7 +19,7 @@ export default function HotJobSection({
     title,
     jobs,
     provinces,
-    type = "urgent",
+    type = "VIEC_LAM_TUYEN_GAP",
     typeFilterItems = [],
 }: Props) {
     const scrollRef = useRef<HTMLDivElement>(null);

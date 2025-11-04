@@ -1,7 +1,7 @@
 import JobCardBase from "./JobCardBase";
-import { Job } from "../../types/job";
+import { JobType } from "../../types/job";
 
-export default function JobCardUrgent({ job }: { job: Job }) {
+export default function JobCardUrgent({ job }: { job: JobType }) {
     return (
         <JobCardBase job={job}>
             {/* Không cần thêm badge gì */}

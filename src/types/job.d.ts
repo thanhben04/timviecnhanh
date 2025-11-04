@@ -1,11 +1,18 @@
-export interface Job {
+export interface JobType {
   title: string;
-  company: string;
-  salary: string;
+  companyName: string;
+  minSalary: number;
+  maxSalary: number;
   location: string;
   logo: string;
   url: string;
-  deadline: string;
-  fastResponse?: string; // chỉ có trong job đi làm ngay
-  noCV?: boolean;       // chỉ có trong job đi làm ngay
+  jobType: "VIEC_DI_LAM_NGAY" | "VIEC_LAM_TUYEN_GAP";
+  deadline?: string;
+  fastResponse?: string;
+  noCV?: boolean;
+  province?: {
+    name: string;
+  };
+  expirationDate?: string;
+  companyLogo?: string;
 }

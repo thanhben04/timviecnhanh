@@ -1,7 +1,7 @@
 import JobCardBase from "./JobCardBase";
-import { Job } from "../../types/job";
+import { JobType } from "../../types/job";
 
-export default function JobCard({ job }: { job: Job }) {
+export default function JobCard({ job }: { job: JobType }) {
   return (
     <JobCardBase job={job}>
       <div className="flex gap-2 mt-2 text-xs flex-wrap">

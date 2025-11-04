@@ -1,6 +1,6 @@
 import { Flex, Input, Select, Tag } from 'antd';
 import { useIsMobile } from 'hooks/useIsMobile';
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import banner7 from '../../assets/images/Banners/Banner7.png';
 import './Home.scss';
@@ -11,6 +11,8 @@ import { HotJobIcon } from 'assets/icons/HotJobIcon';
 import JobList from 'components/Job/JobList';
 import HotJobSection from './Job/HotJobSection';
 import InstantJobSection from './Job/InstantJobSection';
+import { JobType } from 'types/job';
+import axios from 'axios';
 
 const suggestions = [
     "Nhân viên bán hàng",
@@ -25,6 +27,22 @@ const Home: React.FC = () => {
 
     const [searchText, setSearchText] = useState("");
     const [openDropdown, setOpenDropdown] = useState(false);
+
+    const [fetchedJobs, setFetchedJobs] = useState<JobType[]>([]);
+
+    useEffect(() => {
+        const fetchJobs = async () => {
+            try {
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/jobs`);
+                const items = response?.data?.data?.content;
+                setFetchedJobs(Array.isArray(items) ? (items as JobType[]) : []);
+            } catch (error) {
+                setFetchedJobs([]);
+            }
+        };
+        fetchJobs();
+    }, []);
+
     const urgentJobs = [
         {
             title: "Kỹ Sư Điện - Điện Tự Động Hóa",
@@ -429,16 +447,16 @@ const Home: React.FC = () => {
 
             <HotJobSection
                 title="Việc làm tuyển gấp"
-                jobs={urgentJobs}
+                jobs={fetchedJobs.filter((job: JobType) => job.jobType === "VIEC_LAM_TUYEN_GAP")}
                 provinces={provinces}
-                type="urgent"
+                type="VIEC_LAM_TUYEN_GAP"
             />
 
             <InstantJobSection
                 title="Việc đi làm ngay"
-                jobs={instantJobs}
+                jobs={fetchedJobs.filter((job: JobType) => job.jobType === "VIEC_DI_LAM_NGAY")}
                 provinces={provinces}
-                type='instant'
+                type="VIEC_DI_LAM_NGAY"
             />
 
 
