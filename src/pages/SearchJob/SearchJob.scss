@@ -1,0 +1,103 @@
+.no-radius .ant-select-selector,
+.no-radius .ant-select-selector:hover,
+.no-radius .ant-select-selector:focus {
+    border-radius: 0 !important;
+    // border radius top left and bottom left
+    border-top-left-radius: 6px !important;
+    border-bottom-left-radius: 6px !important;
+}
+
+
+.custom-input.ant-input-affix-wrapper,
+.custom-input.ant-input {
+    border: none !important;
+    box-shadow: none !important;
+    background: white !important;
+    outline: none !important;
+    border-radius: 0 !important;
+    border-top-right-radius: 6px !important;
+    border-bottom-right-radius: 6px !important;
+}
+
+.custom-input.ant-input-affix-wrapper:focus,
+.custom-input.ant-input:focus {
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+}
+
+/* Cố định width cho Select và cắt bớt bằng dấu ba chấm khi label dài */
+.select-truncate {
+    width: 220px;
+    /* đồng bộ với style trong TSX */
+}
+
+.select-truncate .ant-select-selector {
+    width: 100%;
+}
+
+.select-truncate .ant-select-selection-item,
+.select-truncate .ant-select-selection-placeholder {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.custom-pagination .ant-pagination-item {
+    border: none;
+    background: transparent;
+}
+
+.custom-pagination .ant-pagination-item a {
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
+    display: inline-block;
+    transition: all 0.2s ease;
+}
+
+.custom-pagination .ant-pagination-item a:hover {
+    border-radius: 50%;
+
+}
+
+.custom-pagination .ant-pagination-next:hover .ant-pagination-item-link,
+.custom-pagination .ant-pagination-prev:hover .ant-pagination-item-link {
+    background-color: white;
+    border-radius: 50%;
+}
+
+.custom-pagination .ant-pagination-item-active a {
+    background-color: #1890ff;
+    /* xanh Ant Design */
+    color: white !important;
+}
+
+.custom-pagination .ant-pagination-prev,
+.custom-pagination .ant-pagination-next {
+    border: 1px solid #e7f0fc;
+    background-color: white;
+    border-radius: 50%;
+}
+
+.custom-pagination .ant-pagination-prev button,
+.custom-pagination .ant-pagination-next button {
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.custom-pagination .ant-pagination-prev button:hover,
+.custom-pagination .ant-pagination-next button:hover {
+    background-color: #eaf4ff;
+}
+
+.custom-pagination .ant-pagination-item-ellipsis {
+    color: #999;
+}

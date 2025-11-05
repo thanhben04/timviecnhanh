@@ -4,4 +4,14 @@ export const routeNames = {
     AUTH: '/auth',
     APP_DOWNLOAD: '/app-download',
     TRANSLATION_DEMO: '/translation-demo',
+    SEARCH: '/search',
 };
+
+// Danh sách các public routes không cần authentication
+export const publicRoutes = [
+    '/',
+    '/auth',
+    '/search',
+    '/app-download',
+    '/translation-demo',
+];

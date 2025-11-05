@@ -89,21 +89,6 @@ const Home: React.FC = () => {
         fetchProvinces();
     }, []);
 
-
-
-    const scrollLeft = () => {
-        if (scrollRef.current) {
-            scrollRef.current.scrollBy({ left: -200, behavior: "smooth" });
-        }
-    };
-
-    const scrollRight = () => {
-        if (scrollRef.current) {
-            scrollRef.current.scrollBy({ left: 200, behavior: "smooth" });
-        }
-    };
-
-
     return (
         <Flex vertical gap={32} className="bg-[#f6f9ff]">
             <div className="bg-[#e7f7ff]">

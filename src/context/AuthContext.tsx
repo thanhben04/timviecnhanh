@@ -4,7 +4,7 @@ import { authServices } from '../services/authServices';
 import { AuthUser, OTPVerificationRequest, PhoneVerificationRequest } from '../types';
 import { debugCookies, testCookies } from '../utils/cookieDebug';
 import FirebaseAuthService from '../services/firebaseAuth';
-import { routeNames } from 'router/constants';
+import { routeNames, publicRoutes } from 'router/constants';
 
 interface AuthContextType {
     user: AuthUser | null;
@@ -75,8 +75,9 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
                     console.log('No auth data found in cookies');
                     console.log(process.env.REACT_APP_API_URL);
 
-                    // Auto navigate to home page if not logged in
-                    if (window.location.pathname !== routeNames.HOME && window.location.pathname !== routeNames.AUTH) {
+                    // Auto navigate to home page if not logged in and not on a public route
+                    const currentPath = window.location.pathname;
+                    if (!publicRoutes.includes(currentPath)) {
                         window.location.href = routeNames.HOME;
                     }
                 }

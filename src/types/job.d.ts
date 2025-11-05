@@ -1,4 +1,6 @@
 export interface JobType {
+  id: string;
+  isFavorite: boolean;
   title: string;
   companyName: string;
   minSalary: number;
