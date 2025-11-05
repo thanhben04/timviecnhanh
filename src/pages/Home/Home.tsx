@@ -13,6 +13,7 @@ import HotJobSection from './Job/HotJobSection';
 import InstantJobSection from './Job/InstantJobSection';
 import { JobType } from 'types/job';
 import axios from 'axios';
+import { Province } from 'services/addressService';
 
 const suggestions = [
     "Nhân viên bán hàng",
@@ -42,205 +43,6 @@ const Home: React.FC = () => {
         };
         fetchJobs();
     }, []);
-
-    const urgentJobs = [
-        {
-            title: "Kỹ Sư Điện - Điện Tự Động Hóa",
-            company: "Công Ty CP Dịch Vụ Thương Mại Công Nghiệp Tàu Thủy Vũng Tàu",
-            salary: "10 - 20 triệu",
-            location: "Bà Rịa - Vũng Tàu",
-            logo: "https://cdn1.vieclam24h.vn/images/employer_avatar/2025/10/07/1578021573_logo_175980440438.png",
-            url: "#",
-            deadline: "Còn 3 ngày",
-        },
-        {
-            title: "Nhân Viên Kinh Doanh",
-            company: "Manulife Việt Nam",
-            salary: "20 - 35 triệu",
-            location: "TP.HCM",
-            logo: "https://cdn1.vieclam24h.vn/images/employer_avatar/2024/03/22/22032833_59434663_logo_175980086.png",
-            url: "#",
-            deadline: "Còn 6 ngày",
-        },
-        {
-            title: "Kỹ Sư Cơ Khí Thiết Bị Khoan",
-            company: "Công Ty CP DV Thương Mại Công Nghiệp ShinTraCo",
-            salary: "10 - 20 triệu",
-            location: "Bà Rịa - Vũng Tàu",
-            logo: "https://cdn1.vieclam24h.vn/images/employer_avatar/2022/11/03/135376546_logo.png",
-            url: "#",
-            deadline: "Còn 3 ngày",
-        },
-        {
-            title: "Nhân Viên Bảo Trì Cơ Khí",
-            company: "Công Ty TNHH Cheng Loong Bình Dương",
-            salary: "9.5 - 12 triệu",
-            location: "Bình Dương",
-            logo: "https://cdn1.vieclam24h.vn/images/employer_avatar/2022/05/13/456537_logo.png",
-            url: "#",
-            deadline: "Còn 3 ngày",
-        },
-        {
-            title: "Kế Toán Tổng Hợp",
-            company: "Công Ty HCP Pumps Việt Nam",
-            salary: "13 - 15 triệu",
-            location: "Long An",
-            logo: "https://cdn1.vieclam24h.vn/images/employer_avatar/2023/02/06/879986_logo.png",
-            url: "#",
-            deadline: "Còn 2 ngày",
-        },
-        {
-            title: "Nhân Viên Chăm Sóc Khách Hàng",
-            company: "FPT Telecom",
-            salary: "8 - 12 triệu",
-            location: "TP.HCM",
-            logo: "https://upload.wikimedia.org/wikipedia/commons/2/2f/FPT_Telecom_logo.svg",
-            url: "#",
-            deadline: "Còn 4 ngày",
-        },
-        {
-            title: "Quản Lý Cửa Hàng Thời Trang",
-            company: "IVY Moda",
-            salary: "12 - 18 triệu",
-            location: "Hà Nội",
-            logo: "https://upload.wikimedia.org/wikipedia/commons/2/25/Ivy_Moda_Logo.png",
-            url: "#",
-            deadline: "Còn 5 ngày",
-        },
-        {
-            title: "Nhân Viên Thu Ngân",
-            company: "WinMart+",
-            salary: "7 - 9 triệu",
-            location: "Hà Nội",
-            logo: "https://upload.wikimedia.org/wikipedia/commons/7/75/Winmart_logo.png",
-            url: "#",
-            deadline: "Còn 2 ngày",
-        },
-        {
-            title: "Nhân Viên Kho",
-            company: "Thế Giới Di Động",
-            salary: "8 - 10 triệu",
-            location: "Bình Dương",
-            logo: "https://upload.wikimedia.org/wikipedia/commons/0/00/Thegioididong_logo.png",
-            url: "#",
-            deadline: "Còn 6 ngày",
-        },
-        {
-            title: "Nhân Viên Giao Hàng",
-            company: "J&T Express",
-            salary: "9 - 12 triệu",
-            location: "Hà Nội",
-            logo: "https://upload.wikimedia.org/wikipedia/commons/4/4c/J%26T_Express_logo.svg",
-            url: "#",
-            deadline: "Còn 1 ngày",
-        },
-        {
-            title: "Nhân Viên Pha Chế",
-            company: "Highlands Coffee",
-            salary: "6 - 8 triệu",
-            location: "TP.HCM",
-            logo: "https://upload.wikimedia.org/wikipedia/commons/4/47/Highlands_Coffee_logo.svg",
-            url: "#",
-            deadline: "Còn 7 ngày",
-        },
-        {
-            title: "Nhân Viên Sales Bất Động Sản",
-            company: "Đất Xanh Group",
-            salary: "15 - 40 triệu",
-            location: "TP.HCM",
-            logo: "https://upload.wikimedia.org/wikipedia/commons/2/22/Dat_Xanh_logo.png",
-            url: "#",
-            deadline: "Còn 10 ngày",
-        },
-        {
-            title: "Chuyên Viên Tư Vấn Tài Chính",
-            company: "Prudential Việt Nam",
-            salary: "12 - 25 triệu",
-            location: "Đà Nẵng",
-            logo: "https://upload.wikimedia.org/wikipedia/commons/a/a6/Prudential_logo.svg",
-            url: "#",
-            deadline: "Còn 8 ngày",
-        },
-        {
-            title: "Nhân Viên CSKH Ngân Hàng",
-            company: "Vietcombank",
-            salary: "9 - 14 triệu",
-            location: "Hà Nội",
-            logo: "https://upload.wikimedia.org/wikipedia/commons/5/55/Vietcombank_logo.svg",
-            url: "#",
-            deadline: "Còn 5 ngày",
-        },
-        {
-            title: "Nhân Viên Kỹ Thuật IT Support",
-            company: "FPT Software",
-            salary: "12 - 18 triệu",
-            location: "Cần Thơ",
-            logo: "https://upload.wikimedia.org/wikipedia/commons/b/bf/FPT_Software_logo.svg",
-            url: "#",
-            deadline: "Còn 7 ngày",
-        },
-        {
-            title: "Nhân Viên Chốt Đơn Online",
-            company: "Shopee Express",
-            salary: "9 - 15 triệu",
-            location: "TP.HCM",
-            logo: "https://upload.wikimedia.org/wikipedia/commons/2/29/Shopee_logo.svg",
-            url: "#",
-            deadline: "Còn 3 ngày",
-        },
-        {
-            title: "Nhân Viên Bán Hàng Siêu Thị",
-            company: "Bách Hóa Xanh",
-            salary: "7 - 9 triệu",
-            location: "Đồng Nai",
-            logo: "https://upload.wikimedia.org/wikipedia/commons/8/89/Bachhoaxanh_logo.png",
-            url: "#",
-            deadline: "Còn 2 ngày",
-        },
-        {
-            title: "Nhân Viên Kiểm Hàng Kho",
-            company: "Lazada Logistics",
-            salary: "8 - 12 triệu",
-            location: "Bình Dương",
-            logo: "https://upload.wikimedia.org/wikipedia/commons/1/1f/Lazada_%282019%29.svg",
-            url: "#",
-            deadline: "Còn 9 ngày",
-        },
-        {
-            title: "Chuyên Viên Marketing",
-            company: "VNG Corporation",
-            salary: "15 - 25 triệu",
-            location: "TP.HCM",
-            logo: "https://upload.wikimedia.org/wikipedia/commons/a/a0/VNG_Corporation_logo.png",
-            url: "#",
-            deadline: "Còn 6 ngày",
-        },
-        {
-            title: "Quản Lý Nhà Hàng",
-            company: "The Coffee House",
-            salary: "12 - 18 triệu",
-            location: "Hà Nội",
-            logo: "https://upload.wikimedia.org/wikipedia/commons/4/4e/The_Coffee_House_logo.svg",
-            url: "#",
-            deadline: "Còn 4 ngày",
-        },
-    ];
-
-
-    const instantJobs = [
-        {
-            title: "Nhân Viên Kỹ Thuật Lắp Đặt Nội Thất",
-            company: "Công Ty TNHH Sanko Việt Nam",
-            salary: "10 - 15 triệu",
-            location: "TP.HCM",
-            logo: "https://cdn1.vieclam24h.vn/images/employer_avatar/2025/05/08/logo-mau-01_174668913330.w-128.h-128.png?v=220513",
-            url: "#",
-            fastResponse: "1 giờ",
-            noCV: true,
-            deadline: "Còn 1 ngày"
-        },
-        // ...
-    ];
 
     const jobItems = [
         {
@@ -277,41 +79,15 @@ const Home: React.FC = () => {
         { label: "Việc làm Bình Dương", icon: <SignalFilled /> },
     ];
 
-    const provinces = [
-        "Tất cả",
-        "TP.HCM",
-        "An Giang",
-        "Bà Rịa - Vũng Tàu",
-        "Bạc Liêu",
-        "Bến Tre",
-        "Bình Dương",
-        "Bình Phước",
-        "Bình Thuận",
-        "Bình Định",
-        "Cà Mau",
-        "Cần Thơ",
-        "Gia Lai",
-        "Hậu Giang",
-        "Khánh Hòa",
-        "Kiên Giang",
-        "Kon Tum",
-        "Lâm Đồng",
-        "Long An",
-        "Ninh Thuận",
-        "Phú Yên",
-        "Quảng Nam",
-        "Quảng Ngãi",
-        "Sóc Trăng",
-        "Tây Ninh",
-        "Tiền Giang",
-        "Trà Vinh",
-        "Vĩnh Long",
-        "Đà Nẵng",
-        "Đắk Lắk",
-        "Đắk Nông",
-        "Đồng Nai",
-        "Đồng Tháp",
-    ];
+    // fetch province from api
+    const [provinces, setProvinces] = useState<Province[]>([]);
+    useEffect(() => {
+        const fetchProvinces = async () => {
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/provinces`);
+            setProvinces(response.data.data.content);
+        };
+        fetchProvinces();
+    }, []);
 
 
 

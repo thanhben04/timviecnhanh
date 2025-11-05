@@ -1,8 +1,8 @@
 export interface Province {
     id: string;
-    province_code: string;
+    provinceCode: string;
     name: string;
-    short_name: string;
+    shortName: string;
     code: string;
     place_type: string;
     country: string;
@@ -63,7 +63,7 @@ class AddressService {
         await this.loadAddressData();
         return this.provinces.map((province) => ({
             label: province.name,
-            value: province.province_code,
+            value: province.provinceCode,
         }));
     }
 
@@ -82,7 +82,7 @@ class AddressService {
 
     getProvinceByCode(code: string): Province | undefined {
         return this.provinces.find(
-            (province) => province.province_code === code
+            (province) => province.provinceCode === code
         );
     }
 

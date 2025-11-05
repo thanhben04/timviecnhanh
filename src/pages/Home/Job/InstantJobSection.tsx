@@ -1,22 +1,23 @@
-import { Select } from "antd";
+import { Pagination, Select } from "antd";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ThunderboltFilled } from "@ant-design/icons";
 import JobList from "components/Job/JobList";
 import { JobType } from "types/job";
-
+import { Province } from "services/addressService";
+import axios from "axios";
 
 
 interface Props {
     title: string;
     jobs: JobType[];
-    provinces: string[];
+    provinces: Province[];
     type?: "VIEC_DI_LAM_NGAY" | "VIEC_LAM_TUYEN_GAP";
 }
 
 export default function InstantJobSection({
     title,
-    jobs,
+    jobs: initialJobs,
     provinces,
     type = "VIEC_DI_LAM_NGAY"
 }: Props) {
@@ -26,15 +27,40 @@ export default function InstantJobSection({
     const [selectedProvince, setSelectedProvince] = useState("Tất cả");
     const [page, setPage] = useState(1);
 
-    const PAGE_SIZE = 6; // phần này thường 6 card / trang
+    const PAGE_SIZE = 10;
 
-    const filteredJobs = selectedProvince === "Tất cả"
-        ? jobs
-        : jobs.filter(job => job.location === selectedProvince);
+    const [jobs, setJobs] = useState<JobType[]>(initialJobs);
+    const [loading, setLoading] = useState(false);
+    const [totalElements, setTotalElements] = useState(0);
 
-    const pageCount = Math.max(1, Math.ceil(filteredJobs.length / PAGE_SIZE));
+    useEffect(() => {
+        const fetchJobs = async () => {
+            setLoading(true);
+            try {
+                const params: any = {
+                    jobType: type,
+                    page: page - 1,
+                    size: PAGE_SIZE,
+                };
 
-    const paginatedJobs = filteredJobs.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
+                if (selectedProvince !== "Tất cả") {
+                    params.provinceCode = selectedProvince;
+                }
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/jobs`, { params });
+                const data = response?.data?.data;
+                const items = data?.content;
+                setJobs(Array.isArray(items) ? (items as JobType[]) : []);
+                setTotalElements(data?.totalElements || 0);
+            } catch (error) {
+                console.error("Error fetching jobs:", error);
+                setJobs([]);
+                setTotalElements(0);
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchJobs();
+    }, [selectedProvince, type, page]);
 
     const scrollLeft = () => scrollRef.current?.scrollBy({ left: -200, behavior: "smooth" });
     const scrollRight = () => scrollRef.current?.scrollBy({ left: 200, behavior: "smooth" });
@@ -72,13 +98,13 @@ export default function InstantJobSection({
                             {provinces.map((province, idx) => (
                                 <button
                                     key={idx}
-                                    onClick={() => { setSelectedProvince(province); setPage(1); }}
-                                    className={`px-4 py-2 rounded-full flex-shrink-0 border text-sm ${selectedProvince === province
-                                            ? "bg-[#FF7A00] text-white border-[#FF7A00]"
-                                            : "bg-white hover:border-[#FF7A00]"
+                                    onClick={() => { setSelectedProvince(province.provinceCode); setPage(1); }}
+                                    className={`px-4 py-2 rounded-full flex-shrink-0 border text-sm ${selectedProvince === province.provinceCode
+                                        ? "bg-[#FF7A00] text-white border-[#FF7A00]"
+                                        : "bg-white hover:border-[#FF7A00]"
                                         }`}
                                 >
-                                    {province}
+                                    {province.name}
                                 </button>
                             ))}
                         </div>
@@ -90,17 +116,18 @@ export default function InstantJobSection({
                 </div>
 
                 {/* JOB LIST */}
-                <JobList jobs={paginatedJobs} type={type} />
+                <JobList jobs={jobs} type={type} />
 
                 {/* PAGINATION */}
                 <div className="flex items-center justify-center gap-3 py-4">
-                    <button onClick={() => setPage(page - 1)} disabled={page === 1} className="p-2 border rounded disabled:opacity-50">
-                        <LeftOutlined />
-                    </button>
-                    <span>{page} / {pageCount}</span>
-                    <button onClick={() => setPage(page + 1)} disabled={page === pageCount} className="p-2 border rounded disabled:opacity-50">
-                        <RightOutlined />
-                    </button>
+                    <Pagination
+                        current={page}
+                        pageSize={PAGE_SIZE}
+                        total={totalElements}
+                        onChange={(newPage) => setPage(newPage)}
+                        showSizeChanger={false}
+                        className="flex justify-center py-4"
+                    />
                 </div>
 
             </div>
