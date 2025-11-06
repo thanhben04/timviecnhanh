@@ -1,7 +1,5 @@
-import { Flex, Input, Tag } from 'antd';
-import { useIsMobile } from 'hooks/useIsMobile';
+import { Button, Divider, Flex, Input, Tag } from 'antd';
 import React, { useEffect, useRef, useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import banner7 from '../../assets/images/Banners/Banner7.png';
 import './Home.scss';
 import { SearchIcon } from 'assets/icons/outlined/SearchIcon';
@@ -15,6 +13,8 @@ import { Province } from 'services/addressService';
 import HotCompany from 'components/Company/HotCompany';
 import SuggestJob from './Job/SuggestJob';
 import BlogSection from './Job/BlogSection';
+import notification from '../../assets/images/notification-bar.png';
+import { HotlineIcon } from 'assets/icons/HotlineIcon';
 
 const suggestions = [
     "Nhân viên bán hàng",
@@ -231,6 +231,57 @@ const Home: React.FC = () => {
             />
 
             <BlogSection />
+            <div className="bg-white">
+                <div className="flex items-center gap-2 p-2 justify-center">
+                    <img height={150} width={150} src={notification} alt="" />
+                    <div className="flex gap-2 text-[18px]">
+                        <div className="font-bold">Ứng tuyển 1 chạm - Mọi lúc mọi nơi</div>
+                        <div className="text-gray-500">Vieclam24h: Tìm Việc Nhanh</div>
+                    </div>
+                    <Button type="primary">Tải ngay</Button>
+                </div>
+            </div>
+            <div className="container">
+                <div className="flex gap-4 justify-between my-10">
+                    <div className="flex flex-col gap-4">
+                        <span className="text-[20px] font-bold text-[#511da0] text-center">Hotline cho Người tìm việc</span>
+                        <div className="flex gap-[100px] justify-between">
+                            <div className="flex flex-col gap-2">
+                                <div className="flex items-center gap-2">
+                                    <HotlineIcon />
+                                    <span className="text-[#511da0] text-[16px] ">Hotline hỗ trợ miền Nam</span>
+
+                                </div>
+                                <span className='text-[#511da0] text-[20px] font-bold'>HCM: 0909 090 909</span>
+                            </div>
+                            <div className="flex flex-col gap-2">
+                                <div className="flex items-center gap-2">
+                                    <HotlineIcon />
+                                    <span className="text-[#511da0] text-[16px]">Hotline hỗ trợ miền Bắc</span>
+
+                                </div>
+                                <span className='text-[#511da0] text-[20px] font-bold'>HN: 0909 090 909</span>
+                            </div>
+                        </div>
+                        <Button className='W-fit' type="primary">Tư vấn cho Người tìm việc</Button>
+                    </div>
+                    <div className="border-l border-gray-300 h-auto py-4 w-1"></div>
+                    <div className="flex flex-col gap-4">
+                        <span className="text-[20px] font-bold">Hotline cho Người tìm việc</span>
+                        <div className="flex gap-8 justify-between">
+                            <div className="flex flex-col gap-2">
+                                <span className="text-[#511da0] text-[16px] font-bold">Hotline hỗ trợ miền Nam</span>
+                                <span className='text-[#511da0] text-[20px]'>HCM: 0909 090 909</span>
+                            </div>
+                            <div className="flex flex-col gap-2">
+                                <span className="text-[#511da0] text-[16px] font-bold">Hotline hỗ trợ miền Bắc</span>
+                                <span className='text-[#511da0] text-[20px]'>HCM: 0909 090 909</span>
+                            </div>
+                        </div>
+                        <Button type="primary">Tư vấn cho Người tìm việc</Button>
+                    </div>
+                </div>
+            </div>
         </Flex>
     );
 };
