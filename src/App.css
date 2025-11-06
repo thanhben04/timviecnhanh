@@ -79,6 +79,12 @@ a:hover {
 }
 
 
+:root {
+  /* Dạng RGB để Tailwind có thể áp dụng alpha (bg-brand/10, v.v.) */
+  --color-brand: 37 99 235; /* #2563eb */
+  --radius-md: 8px;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

@@ -1,6 +1,9 @@
 .custom-header {
     background-color: #451da0;
     height: 64px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 
 }
 

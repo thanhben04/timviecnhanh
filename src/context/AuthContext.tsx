@@ -77,9 +77,9 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
                     // Auto navigate to home page if not logged in and not on a public route
                     const currentPath = window.location.pathname;
-                    if (!publicRoutes.includes(currentPath)) {
-                        window.location.href = routeNames.HOME;
-                    }
+                    // if (!publicRoutes.includes(currentPath)) {
+                    //     window.location.href = routeNames.HOME;
+                    // }
                 }
             } catch (error) {
                 console.error('Auth initialization error:', error);

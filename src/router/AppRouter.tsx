@@ -18,6 +18,7 @@ import NotFound from '../pages/NotFound/NotFound';
 
 import { routeNames } from './constants';
 import SearchJob from 'pages/SearchJob/SearchJob';
+import JobDetail from 'pages/Job/JobDetail';
 
 
 const AppRouter: React.FC = () => {
@@ -31,6 +32,7 @@ const AppRouter: React.FC = () => {
 
                 {/* Home with Layout */}
                 <Route path="/search" element={<Layout><SearchJob /></Layout>} />
+                <Route path="/job/:id" element={<Layout><JobDetail /></Layout>} />
 
 
                 {/* Redirects */}
