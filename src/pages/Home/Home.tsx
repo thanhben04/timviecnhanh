@@ -14,6 +14,7 @@ import axios from 'axios';
 import { Province } from 'services/addressService';
 import HotCompany from 'components/Company/HotCompany';
 import SuggestJob from './Job/SuggestJob';
+import BlogSection from './Job/BlogSection';
 
 const suggestions = [
     "Nhân viên bán hàng",
@@ -228,6 +229,8 @@ const Home: React.FC = () => {
                 provinces={provinces}
                 type="VIEC_LAM_TUYEN_GAP"
             />
+
+            <BlogSection />
         </Flex>
     );
 };
