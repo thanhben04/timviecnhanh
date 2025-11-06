@@ -1,19 +1,19 @@
-import { Flex, Input, Select, Tag } from 'antd';
+import { Flex, Input, Tag } from 'antd';
 import { useIsMobile } from 'hooks/useIsMobile';
 import React, { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import banner7 from '../../assets/images/Banners/Banner7.png';
 import './Home.scss';
 import { SearchIcon } from 'assets/icons/outlined/SearchIcon';
-import { BookFilled, LeftOutlined, RightOutlined, SignalFilled, ThunderboltFilled } from '@ant-design/icons';
+import { BookFilled, SignalFilled, ThunderboltFilled } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
-import { HotJobIcon } from 'assets/icons/HotJobIcon';
-import JobList from 'components/Job/JobList';
 import HotJobSection from './Job/HotJobSection';
 import InstantJobSection from './Job/InstantJobSection';
 import { JobType } from 'types/job';
 import axios from 'axios';
 import { Province } from 'services/addressService';
+import HotCompany from 'components/Company/HotCompany';
+import SuggestJob from './Job/SuggestJob';
 
 const suggestions = [
     "Nhân viên bán hàng",
@@ -220,7 +220,14 @@ const Home: React.FC = () => {
                 type="VIEC_DI_LAM_NGAY"
             />
 
+            <HotCompany />
 
+            <SuggestJob
+                title="Việc làm gợi ý"
+                jobs={fetchedJobs}
+                provinces={provinces}
+                type="VIEC_LAM_TUYEN_GAP"
+            />
         </Flex>
     );
 };
